@@ -14,6 +14,8 @@ public class HelpWindow : MonoBehaviour
         private const float kPadding = 40f;
         GUIStyle style;
 
+    public GameObject userPromptInput;
+
     private void OnGUI()
         {
         GUISkin oldSkin = GUI.skin;
@@ -24,7 +26,7 @@ public class HelpWindow : MonoBehaviour
                 Vector2 size = GUI.skin.label.CalcSize(new GUIContent(m_Description));
                 Vector2 halfSize = size * 0.5f;
 
-                float maxWidth = Mathf.Min(Screen.width - kPadding, size.x/2);
+                float maxWidth = Mathf.Min(Screen.width - kPadding, size.x);
                 float left = Screen.width * 0.3f - maxWidth * 0.5f;
                 float top = Screen.height * 0.4f - halfSize.y;
 
@@ -45,6 +47,7 @@ public class HelpWindow : MonoBehaviour
             if (GUILayout.Button("Got it!"))
             {
                 mShowingHelpWindow = false;
+                userPromptInput.SetActive(true);
             }
         }
     }
